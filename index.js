@@ -13,12 +13,12 @@ async function fetchPlayer(player) {
 	return response = new jsdom.JSDOM(response)
 }
 
-exports.fetchSkinPlayer = async (player, dimension) => {
+module.exports.fetchSkinPlayer = async (player, dimension) => {
 	if (dimension > 100 || dimension < 16) return Error("Dimension must be between 16 and 100"); 
 	return `https://skins.nationsglory.fr/face/${player}/${dimension}`
 }
 
-exports.getInfosServer = async (player) => {
+module.exports.getInfosServer = async (player) => {
 	var playerPage = await fetchPlayer(player)
 	var document = playerPage.window.document;
 	if (document.querySelector("h2.h1.section-title.mb-2")) return Error("Player was not found.")
@@ -39,17 +39,14 @@ exports.getInfosServer = async (player) => {
 	return values;
 }
 
-exports.getPlayer = async (player) => {
+module.exports.getPlayer = async (player) => {
 	var playerPage = await fetchPlayer(player)
 	var document = playerPage.window.document;
 	if(document.querySelector("h2.h1.section-title.mb-2")) return Error("Player was not found.")
 	return {
 		name: player,
 		description: document.querySelector("p.lead") === null ? "No description" : document.querySelector("p.lead").innerHTML,
-		skin: await fetchSkinPlayer(player, 16),
-		servers: await getInfosServer(player)
+		skin: await this.fetchSkinPlayer(player, 16),
+		servers: await this.getInfosServer(player)
 	}
 }
-
-
-
