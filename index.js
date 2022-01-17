@@ -25,10 +25,8 @@ module.exports.getInfosServer = async (player) => {
 	var values = []
 	document.querySelectorAll('div.card.server-tab.d-none').forEach(ele => {
 		var alreadyConnect = ele.querySelector('h3').textContent !== "Oups...";
-		var lastConnect = alreadyConnect ? ele.children[0].textContent.split("\n")[11].split(" ") : null;
 		values.push({
 			server: ele.getAttribute('data-server'),
-			playing_time: alreadyConnect ? moment(`${lastConnect[0]}:${lastConnect[2]}:${lastConnect[4]}`, "HH:mm:ss").format("HH:mm:ss") : null,
 			rank: alreadyConnect ? ele.children[0].textContent.split("\n")[15] : null,
 			reputation: alreadyConnect ? ele.children[0].textContent.split("\n")[19] : null,
 			country: alreadyConnect ? ele.children[0].textContent.split("\n")[25] : null,
