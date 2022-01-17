@@ -1,6 +1,17 @@
+# 🚧 WARNING
+
+This project is under development.\
+There may be bugs.
+
 # NationGlory API
 
 A simple API for Minecraft Server: NationGlory
+
+## Installation
+
+```cmd
+npm install nationglory-api@latest
+```
 
 # Examples
 
@@ -8,8 +19,8 @@ A simple API for Minecraft Server: NationGlory
 
 ```JS
 /**
-* 		@param {string} player - Player Name.
-* 		@param {string} dimension - Dimension of image (max: 100px, min: 16).
+* 	@param {string} player - Player Name.
+* 	@param {string} dimension - Dimension of image (max: 100px, min: 16).
 */
 ```
 
@@ -31,28 +42,19 @@ getPlayer(player).then(v => console.log(v));
 /*
 {
     name: 'Skanix',
-    description: 'My Description',
+    description: 'Ma Description',
     skin: 'https://skins.nationsglory.fr/face/Skanix/16',
     servers: [
-    {
-        server: 'blue',
-        playing_time: 'Invalid date',
-        rank: 'Joueur',
-        reputation: 'Bonne',
-        country: 'Pas de pays',
-    }
-        country_rank: 'Pas de rang',
-        powers: '10/25'
-    },
-    {
-        server: 'orange',
-        playing_time: '06:18:00',
-        rank: 'Joueur',
-        reputation: 'Bonne',
-        country: 'Panama',
-        country_rank: 'Recrue',
-        powers: '10/25'
-    },
+        {
+            server: 'orange',
+            playing_time: '06:18:00',
+            rank: 'Joueur',
+            reputation: 'Bonne',
+            country: 'Panama',
+            country_rank: 'Recrue',
+            powers: '10/25'
+        },
+    ]
     ... (all server)
 }
 */
